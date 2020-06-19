@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AI:
     PerceptionSphereRadius: 5
-    PerceptionConeAngle: 124.82
+    PerceptionConeAngle: 90
     MaxDistanceTravel: 10
-    StopDistance: 2
+    StopDistance: 1
     Speed: 3
     Height: 1.82
     Radius: 0.5
+  Settings:
+    Destinations:
+    - {x: 5, y: 0, z: 5}
+    - {x: 5, y: 0, z: -5}
+    - {x: -5, y: 0, z: -5}
+    - {x: -5, y: 0, z: 5}

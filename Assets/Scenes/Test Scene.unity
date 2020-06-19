@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 231286885}
   - component: {fileID: 231286887}
   - component: {fileID: 231286886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 368905664}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 773192125}
   - component: {fileID: 773192127}
   - component: {fileID: 773192126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 789166387}
   - component: {fileID: 789166385}
   - component: {fileID: 789166386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789166384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.48, y: 2.24, z: 0}
+  m_LocalPosition: {x: 12.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1232346159}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 926682099}
   - component: {fileID: 926682101}
   - component: {fileID: 926682100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 931897151}
   - component: {fileID: 931897150}
   - component: {fileID: 931897155}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Test Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931897149}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.28, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 146495665}
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 963142812}
   - component: {fileID: 963142814}
   - component: {fileID: 963142813}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 1046733941}
   - component: {fileID: 1046733940}
   - component: {fileID: 1046733939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232346159}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1081,7 @@ GameObject:
   - component: {fileID: 1276687261}
   - component: {fileID: 1276687263}
   - component: {fileID: 1276687262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1396,7 +1396,7 @@ GameObject:
   - component: {fileID: 1564849297}
   - component: {fileID: 1564849296}
   - component: {fileID: 1564849295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,7 +1508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1790711277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,7 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4762c9ce2697d56448317f9f272f76ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlledEnemy: {fileID: 789166385}
+  _controlledEnemy: {fileID: 0}
 --- !u!4 &1790711278
 Transform:
   m_ObjectHideFlags: 0
@@ -1555,10 +1555,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 931897154}
     m_Modifications:
+    - target: {fileID: 4233586665805112601, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7690216200768764762, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
         type: 3}
       propertyPath: m_Name
       value: Selection Prefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690216200768764762, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7690216200768764763, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
         type: 3}
@@ -1909,10 +1919,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1564849299}
     m_Modifications:
+    - target: {fileID: 4233586665805112601, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7690216200768764762, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
         type: 3}
       propertyPath: m_Name
       value: Selection Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690216200768764762, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7690216200768764763, guid: 8a2503b6ff5ec604c92042f5dc8192fe,
         type: 3}

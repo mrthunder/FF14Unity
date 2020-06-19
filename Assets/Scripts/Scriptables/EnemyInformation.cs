@@ -37,6 +37,16 @@ public class EnemyInformation : ScriptableObject
 
         public float Radius;
     }
+    [System.Serializable]
+    public struct PatrolSettings
+    {
+        public List<Vector3> Destinations;
+    }
+
     [Header("AI Settings")]
     public AISetting AI;
+
+    [Space(2f), Header("State Machine")]
+    [Header("Patrol")]
+    public PatrolSettings Settings;
 }
