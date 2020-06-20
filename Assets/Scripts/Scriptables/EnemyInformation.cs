@@ -21,7 +21,7 @@ public class EnemyInformation : ScriptableObject
         /// <summary>
         /// How far can this enemy travel until it gets back to its initial position
         /// </summary>
-        public float MaxDistanceTravel;
+        public float MaxTravelDistance;
 
         /// <summary>
         /// How far from the player will the enemy stop to attack

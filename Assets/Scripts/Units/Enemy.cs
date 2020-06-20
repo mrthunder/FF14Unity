@@ -77,17 +77,18 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        DrawPerceptionGizmo();
-        DrawPatrolPaths();
+        DrawPerceptionGizmo(Color.red);
+        DrawPatrolPaths(Color.green);
+        DrawTravelDistance(Color.magenta);
     }
 
-    private void DrawPerceptionGizmo()
+    private void DrawPerceptionGizmo(Color color)
     {
         //Field of View
         if (Information != null)
         {
-            Gizmos.color = Color.red;
-            UnityEditor.Handles.color = new Color(1, 0, 0, .1f);
+            Gizmos.color = color;
+            UnityEditor.Handles.color = color - new Color(0, 0, 0, .9f);
             var startPosition = transform.position + new Vector3(0, Information.AI.Height / 2, 0);
             var normal = Vector3.up;
             var from = transform.forward;
@@ -99,13 +100,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void DrawPatrolPaths()
+    private void DrawPatrolPaths(Color color)
     {
         if(Information!=null && Information.Settings.Destinations!= null)
         {
             for (int i = 0; i < Information.Settings.Destinations.Count; i++)
             {
-
+                Gizmos.color = color;
                 Vector3 from = Application.isPlaying?GetWorldPosition(Information.Settings.Destinations[i]):transform.TransformPoint(Information.Settings.Destinations[i]);
                 Gizmos.DrawSphere(from, .1f);
                 Vector3 to = Application.isPlaying ? GetWorldPosition(Information.Settings.Destinations[0]) : transform.TransformPoint(Information.Settings.Destinations[0]);
@@ -115,6 +116,21 @@ public class Enemy : MonoBehaviour
                 }
                 Gizmos.DrawLine(from, to);
             }
+        }
+    }
+
+    private void DrawTravelDistance(Color color)
+    {
+        if(Information != null)
+        {
+            Vector3 centre = transform.position;
+            if(Application.isPlaying)
+            {
+                centre = InitialPosition;
+            }
+            float radius = Information.AI.MaxTravelDistance;
+            Gizmos.color = color;
+            Gizmos.DrawWireSphere(centre, radius);
         }
     }
 #endif

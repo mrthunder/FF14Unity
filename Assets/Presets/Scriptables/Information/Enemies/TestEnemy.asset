@@ -15,9 +15,9 @@ MonoBehaviour:
   AI:
     PerceptionSphereRadius: 5
     PerceptionConeAngle: 90
-    MaxDistanceTravel: 10
+    MaxTravelDistance: 20
     StopDistance: 1
-    Speed: 3
+    Speed: 5
     Height: 1.82
     Radius: 0.5
   Settings:
