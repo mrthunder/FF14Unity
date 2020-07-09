@@ -1,18 +1,22 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private int _maxHealth = 100;
+    private int _currentHealth = 100;
+
+    private void Awake()
     {
-        
+        _currentHealth = _maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RecoverHealth(int amount)
     {
-        
+        var clampAmount = Mathf.Clamp(amount, 0, _maxHealth - _currentHealth);
+        _currentHealth = clampAmount;
     }
 }

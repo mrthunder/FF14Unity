@@ -49,4 +49,6 @@ public class EnemyInformation : ScriptableObject
     [Space(2f), Header("State Machine")]
     [Header("Patrol")]
     public PatrolSettings Settings;
+
+    public SkillGroup SkillSet;
 }

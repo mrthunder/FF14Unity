@@ -14,7 +14,7 @@ public class AIEnemyController : MonoBehaviour
 
     public void AssignControlledEnemy(Enemy enemy)
     {
-        if(_controlledEnemy ==null)
+        if (_controlledEnemy == null)
         {
             _controlledEnemy = enemy;
         }
@@ -30,12 +30,12 @@ public class AIEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_controlledEnemy)
+        if (_controlledEnemy)
         {
             transform.position = _controlledEnemy.transform.position;
 
             // Patrol until you find someone
-            if (_target ==null && _stateMachine.CurrentState == StateMachineComponent.State.Patrol )
+            if (_target == null && _stateMachine.CurrentState == StateMachineComponent.State.Patrol)
             {
                 _stateMachine.Patrol(_destinations, _controlledEnemy.Agent, _controlledEnemy.InitialPosition);
                 // I am just saving the layer mask where the player / character is.
@@ -60,16 +60,16 @@ public class AIEnemyController : MonoBehaviour
                 _stateMachine.Pursuit(_target, _controlledEnemy.Agent);
             }
             // Just checking if the player went to far from its initial position.
-            if(_stateMachine.CurrentState == StateMachineComponent.State.Pursuit &&
+            if (_stateMachine.CurrentState == StateMachineComponent.State.Pursuit &&
                 _stateMachine.IsTooFarFromInit(_controlledEnemy.transform.position, // AI current position
                 _controlledEnemy.InitialPosition, // AI initial position
                 _controlledEnemy.Information.AI.MaxTravelDistance)) // How far can the ai go from its initial position
             {
                 _stateMachine.FallBack(_controlledEnemy.InitialPosition, _controlledEnemy.Agent);
             }
-            if(_stateMachine.CurrentState == StateMachineComponent.State.Fallback && _stateMachine.DidReturnedToInitPos(_controlledEnemy.InitialPosition,_controlledEnemy.Agent))
+            if (_stateMachine.CurrentState == StateMachineComponent.State.Fallback && _stateMachine.DidReturnedToInitPos(_controlledEnemy.InitialPosition, _controlledEnemy.Agent))
             {
-                if(_target !=null)
+                if (_target != null)
                 {
                     _stateMachine.Pursuit(_target, _controlledEnemy.Agent);
                 }
@@ -78,10 +78,24 @@ public class AIEnemyController : MonoBehaviour
                     _stateMachine.Patrol(_destinations, _controlledEnemy.Agent, _controlledEnemy.InitialPosition);
                 }
             }
+            if (_stateMachine.CurrentState == StateMachineComponent.State.Pursuit && _controlledEnemy.Agent.velocity.magnitude == 0)
+            {
+                if(_target)
+                {
+                    _stateMachine.Engage(_target.Stats, _controlledEnemy.Agent, _controlledEnemy);
+                }
+            }
+            if (_stateMachine.CurrentState == StateMachineComponent.State.Engage && _controlledEnemy.IsFarFromTheTarget(_target.transform.position))
+            {
+                if (_target)
+                {
+                    _stateMachine.Pursuit(_target, _controlledEnemy.Agent);
+                }
+            }
 
 
         }
-        
+
     }
 
     private void OnDestroy()

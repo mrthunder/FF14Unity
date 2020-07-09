@@ -57,6 +57,10 @@ public class StateMachineComponent : MonoBehaviour
         if (agent)
         {
             SetCurrentState(State.Pursuit);
+            if(agent.isStopped)
+            {
+                agent.isStopped = false;
+            }
             agent.SetDestination(target.transform.position);
         }
     }
@@ -65,12 +69,11 @@ public class StateMachineComponent : MonoBehaviour
     /// Attacks the target
     /// </summary>
     /// <param name="target">Who are you attacking?</param>
-    public void Engage<T>(T target)
+    public void Engage(StatsComponent target, in NavMeshAgent agent, in Enemy enemy)
     {
         SetCurrentState(State.Engage);
-        // while the nav mesh agent is stop
-        // Attack target 
-        // The attack should tell if it can attack or not based on the distance
+        agent.isStopped = true;
+        enemy.Attack(target);
     }
 
     /// <summary>
@@ -104,6 +107,7 @@ public class StateMachineComponent : MonoBehaviour
         }
         return false;
     }
+
 
     /// <summary>
     /// I will check the surroundings to see if anything gets in radius. 

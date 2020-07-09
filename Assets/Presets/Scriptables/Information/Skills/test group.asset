@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Skill Name
-  m_EditorClassIdentifier: Assembly-CSharp::SkillInformation
-  Name: 
-  Effect: 
-  Icon: {fileID: 0}
-  Radius: 0
-  Range: 0
-  Cast: 0
-  Recast: 0
-  SkillType: 0
-  MpCost: 0
+  m_Script: {fileID: 11500000, guid: b26d72f1b19415b49a2744a47af5f85b, type: 3}
+  m_Name: test group
+  m_EditorClassIdentifier: 
+  test:
+  - EffectPrefab: {fileID: 0}

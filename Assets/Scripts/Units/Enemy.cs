@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public EnemyInformation Information = null;
     private NavMeshAgent _agent = null;
     public NavMeshAgent Agent => _agent;
+    public StatsComponent Stats = null;
 
     /// <summary>
     /// The enemy needs to know its initial position to go back as soon as it goes to far from it.
@@ -55,23 +56,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void StopMoving()
+    public void StopMoving() => _agent.isStopped = true;
+
+    public void Attack(StatsComponent target)
     {
-        _agent.isStopped = true;
+        if(Information.SkillSet != null && Information.SkillSet.Skills.Count >0)
+        {
+            Information.SkillSet.Skills[0].StartCasting(Stats,target);
+        }
     }
 
-    public void Attack(Character target)
+    private void Update()
     {
-        //Will be reducing the damage
-        Log("Attack!!!");
+        if (Information.SkillSet != null)
+        {
+            for (int i = 0; i < Information.SkillSet.Skills.Count; i++)
+            {
+                // That is null because the enemy does not have any input
+                Information.SkillSet.Skills[i].SkillUpdate(null);
+            } 
+        }
     }
 
-    public Vector3 GetWorldPosition(Vector3 local)
-    {
-        return _initialPosition + local;
-    }
+    public Vector3 GetWorldPosition(Vector3 local) => _initialPosition + local;
 
-    public float DistanceFromTarget(Vector3 targetPosition) => Vector3.Distance(transform.position, targetPosition);
+    public bool IsFarFromTheTarget(Vector3 targetPosition) => Vector3.Distance(transform.position, targetPosition) > Information.AI.StopDistance;
 
 #if UNITY_EDITOR
 
