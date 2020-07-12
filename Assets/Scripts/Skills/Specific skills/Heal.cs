@@ -1,11 +1,10 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Heal : TargetSkillEffect
 {
-    [TitleGroup("Effect")]
+    [Header("Effect")]
     public int RecoveryPoints = 100;
     public float EffectDuration = 5f;
 

@@ -60,13 +60,19 @@ public class AIEnemyController : MonoBehaviour
                 _stateMachine.Pursuit(_target, _controlledEnemy.Agent);
             }
             // Just checking if the player went to far from its initial position.
+            // Pursuit -> Fallback
             if (_stateMachine.CurrentState == StateMachineComponent.State.Pursuit &&
                 _stateMachine.IsTooFarFromInit(_controlledEnemy.transform.position, // AI current position
                 _controlledEnemy.InitialPosition, // AI initial position
-                _controlledEnemy.Information.AI.MaxTravelDistance)) // How far can the ai go from its initial position
+                _controlledEnemy.Information.AI.MaxTravelDistance)) // How far can the AI go from its initial position
             {
                 _stateMachine.FallBack(_controlledEnemy.InitialPosition, _controlledEnemy.Agent);
             }
+            // If the AI returned to the initial position then the AI should return to pursuit the target if the target still exist.
+            // Else just return to patrol
+            //            -> Pursuit
+            // Fallback -|
+            //            -> Patrol
             if (_stateMachine.CurrentState == StateMachineComponent.State.Fallback && _stateMachine.DidReturnedToInitPos(_controlledEnemy.InitialPosition, _controlledEnemy.Agent))
             {
                 if (_target != null)
@@ -78,6 +84,8 @@ public class AIEnemyController : MonoBehaviour
                     _stateMachine.Patrol(_destinations, _controlledEnemy.Agent, _controlledEnemy.InitialPosition);
                 }
             }
+            //If the AI reach the target, then attack
+            // Pursuit -> Engage
             if (_stateMachine.CurrentState == StateMachineComponent.State.Pursuit && _controlledEnemy.Agent.velocity.magnitude == 0)
             {
                 if(_target)
@@ -85,6 +93,8 @@ public class AIEnemyController : MonoBehaviour
                     _stateMachine.Engage(_target.Stats, _controlledEnemy.Agent, _controlledEnemy);
                 }
             }
+            // If the target starts to move away then, starts to pursuit
+            // Engage -> Pursuit
             if (_stateMachine.CurrentState == StateMachineComponent.State.Engage && _controlledEnemy.IsFarFromTheTarget(_target.transform.position))
             {
                 if (_target)

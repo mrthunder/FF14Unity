@@ -60,9 +60,9 @@ public class Enemy : MonoBehaviour
 
     public void Attack(StatsComponent target)
     {
-        if(Information.SkillSet != null && Information.SkillSet.Skills.Count >0)
+        if(Information.SkillSet != null && Information.SkillSet.SkillTable.Count >0)
         {
-            Information.SkillSet.Skills[0].StartCasting(Stats,target);
+            Information.SkillSet.SkillTable["Unique"]?.StartCasting(Stats,target);
         }
     }
 
@@ -70,10 +70,10 @@ public class Enemy : MonoBehaviour
     {
         if (Information.SkillSet != null)
         {
-            for (int i = 0; i < Information.SkillSet.Skills.Count; i++)
+            foreach (KeyValuePair<string, Skill> pair in Information.SkillSet.SkillTable)
             {
                 // That is null because the enemy does not have any input
-                Information.SkillSet.Skills[i].SkillUpdate(null);
+                pair.Value.SkillUpdate(null);
             } 
         }
     }

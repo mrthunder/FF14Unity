@@ -1,8 +1,10 @@
 ﻿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
+[DebuggerDisplay("Health: {_currentHealth}")]
 public class StatsComponent : MonoBehaviour
 {
     [SerializeField]
